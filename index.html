@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>  
+    <script>
+        if (sessionStorage.getItem("birthdayUnlocked") === "true") {
+            document.documentElement.classList.add("birthday-unlocked");
+        }
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="For You">
+    <meta property="og:description" content="A little something, just for you.">
+    <meta property="og:url" content="https://dear-ding.netlify.app/">
+    <meta property="og:image" content="https://dear-ding.netlify.app/images/favicon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <title>For You</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <!--我愛妳-->
+</head>
+<body>
+    <div id="password-screen" class="password-screen">
+        <div class="password-box">
+            <h1>For Ding.</h1>
+            <p class="password-hint">請輸入密碼</p>
+
+            <form id="password-form">
+                <input
+                    id="password-input"
+                    type="password"
+                    inputmode="numeric"
+                    maxlength="4"
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit">OPEN</button>
+            </form>
+
+            <p id="password-error" class="password-error"></p>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <a href="index.html" class="site-title">Happy Birthday</a>
+        <button class="menu-button" type="button"
+                aria-label="開啟選單"
+                aria-expanded="false"
+                aria-controls="site-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="site-nav" class="site-nav">
+            <a href="index.html">首頁</a>
+            <a href="making-of.html">製作紀錄</a>
+        </nav>
+    </header>
+    <main>
+        <section id="hero" class="hero">
+            <picture class="hero-picture">
+                <img src="images/20260322_181520.png" alt="封面大圖">
+            </picture>
+            <div class="hero-content">
+                <h1>願妳的每一天都有讓妳喜歡的理由</h1>
+                <p class="hero-subtitle">
+                    <time datetime="2026-10-25">2026.10.25</time>
+                    for Ding
+                </p>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="gallery-carousel">
+                <button class="gallery-prev" type="button" aria-label="上一張">‹</button>
+                <div class="gallery-track">
+                    <img src="images/20260322_001.jpg" alt="photo1">
+                    <img src="images/Screenshot_20250927_001.png" alt="photo2">
+                    <img src="images/20251221_010.jpg" alt="photo3">
+                    <img src="images/20251221_003.jpg" alt="photo4">
+                    <img src="images/20260322_101.jpg" alt="photo0-1">
+                    <img src="images/20260322_004.jpg" alt="photo5">
+                    <img src="images/20260322_005.jpg" alt="photo6">
+                    <img src="images/20251221_011.jpg" alt="photo8">
+                    <img src="images/20251220_006.jpg" alt="photo9">
+                    <img src="images/Screenshot_20251027_007.png" alt="photo10">
+                    <img src="images/20251220_008.jpg" alt="photo11">
+                    <img src="images/Screenshot_20251024_009.png" alt="photo12">
+                    <img src="images/20251124_103.jpg" alt="photo0-3">
+                    <img src="images/20260322_002.jpg" alt="photo7">
+                    <img src="images/20260322_012.jpg" alt="photo13">
+                    <img src="images/20260322_013.jpg" alt="photo14">
+                    <img src="images/Screenshot_20251027_014.png" alt="photo15">
+                    <img src="images/1766222837528_015.jpg" alt="photo16">
+                    <img src="images/20260322_102.jpg" alt="photo0-2">
+                </div>
+                <button class="gallery-next" type="button" aria-label="下一張">›</button>
+            </div>
+        </section>
+
+        <section id="letters" class="letters">
+            <div class="letter-heading">
+                <h2>寫給妳的話</h2>
+            </div>
+            <div class="letter-list">
+                <button class="letter-button" type="button" data-target="letter-1">
+                    <span>
+                        第一封信
+                        <small>A letter for you</small>
+                    </span>
+                </button>
+                <button class="letter-button" type="button" data-target="letter-2">
+                    <span>
+                        第二封信
+                        <small>Something to tell you</small>
+                    </span>
+                </button>
+            </div>
+
+            <dialog id="letter-1" class="letter-dialog">
+                <div class="letter-modal-content">
+                    <button class="letter-close" type="button" aria-label="關閉">
+                        &times;
+                    </button>
+                    <div class="letter-content">
+                        <p>哈溜~生日快樂！時間過得好快，不知不覺認識妳到現在已經過去一年了，妳也長大了一歲！不知道妳最近過得怎麼樣呢？希望妳一切都順利，也有好好照顧自己。
+
+最近天氣開始慢慢變涼，雖然白天還是有點熱，但我果然還是很喜歡秋天，妳出門的時候要記得注意保暖，不要著涼了，開車騎車也要注意安全，想吃什麼的時候就吃，不知道那箱巧克力妳吃完了嗎，我自己都覺得它會變防災糧食哈哈。
+
+還有一點很重要很重要的事，要記得喝水！雖然說水很難喝，不過我之前有試過把康普茶倒進冰的瓶裝水裡面一起喝，覺得還不錯，也許妳也可以試試看~
+
+我一直覺得，遇見妳的我是很幸運的，誰也不會想到兩個這麼不一樣的人會相遇，我自己都覺得很神奇，明明有不同的想法和生活，卻還是能夠認識彼此，甚至一起經歷了好多以前從來沒有想過的事情。
+
+雖然我們有很多不同的地方，但在我眼裡，妳一直是一個很特別的人，有自己的想法，也很重視身邊的人，雖然有時候可能不擅長表達自己的想法和感受，但我覺得妳一直有著屬於自己的溫柔。還有，妳笑起來真的很好看！希望未來也有很多能讓妳發自內心笑出來的時刻，也記得把這份溫柔留一點給自己，好好珍惜自己，因為妳也是一個很重要的人。
+
+今年也發生了很多事，時間過得好快，轉眼又要到十一月了。不知道妳有沒有什麼願望、想完成的事情，又或是碰到讓妳覺得開心的事呢？不管是什麼，希望那些平凡又美好的時刻，都能成為妳值得珍藏的回憶，也為妳帶來一點小幸運。
+
+最後，想把今年的生日祝福送給妳。
+
+新的一歲，希望妳平安健康，一切順利，每天都能好好吃飯、好好休息。也希望妳想做的事情都能慢慢實現，去想去的地方，見想見的人，也能和珍惜的人一起留下更多開心的回憶。
+
+希望妳在平凡的日子裡，也有很多值得期待的小事，即使偶爾遇到不順利的日子，也希望妳能被溫柔以待。
+
+丁，生日快樂！願妳一直幸福。
+</p>
+                    </div>
+                </div>
+            </dialog>
+            <dialog id="letter-2" class="letter-dialog">
+                <div class="letter-modal-content">
+                    <button class="letter-close" type="button" aria-label="關閉">
+                        &times;
+                    </button>
+                    <div class="letter-content">
+                        <p>其實我有好多話想對妳說，但要開始打的時候又不知要從何說起哈哈，簡直跟現實生活裡的我一模一樣不善於表達。
+
+今年對我來說，發生了很多以前沒有想過的事情，也經歷了一些低潮。有時候會覺得自己好像想得太多了，明明只是很普通的一件事，卻總忍不住去思考它背後的原因，想知道自己為什麼會有這樣的感受，又為什麼會做出那樣的選擇。
+
+在遇見妳之前，我覺得自己很孤單，也希望能被誰在乎、放在心上、被考慮到，也希望有個人能在重要的時刻陪伴在我身邊，但那時候的我，覺得那是不存在於我身上的事。
+
+大一時我對任何事都很焦慮和感到壓力，社交、課業，還有當時在醫院住院的阿婆，我相信自己在那段時間心裡是擔心的，但依舊是用樂觀的態度去面對，因為這是我最擅長的事。一直到後來祂過世了，我其實沒什麼感受，我心裡想著，如果連很常跟祂頂嘴的我都掉淚的話，那家人該怎麼辦？
+
+我就這樣擅自背負著那些原本不該由當時的我承擔的責任，也一直習慣用這樣的方式生活，直到後來我遇見了妳。我從來沒有碰過有誰一上來就那麼活潑開朗的跟我聊天哈哈，當初真的覺得妳是個超級大E人，也是那個時候開始，我第一次知道原來自己也可以這樣毫無理由的被一個人在乎。
+
+其實一開始我也不知道該怎麼面對這樣的感覺，因為對我來說，這是很陌生的事情，甚至覺得這放在我身上有點奢侈。我一直很習慣自己一個人，習慣在其他人面前用笑容帶過一切，告訴自己生活就是這樣，也覺得很多事情只要自己能夠處理就好了，不需要特別告訴誰。
+
+認識妳之前，我是個「情緒穩定」的人，告訴自己：「我不能有情緒」的那種穩定。
+
+妳出現後，我開始會想把生活裡發生的事情分享給妳，無論是開心的、難過的，還是一些其實沒什麼特別的小事。有時候只是突然想到什麼，或是看到一個有趣的東西，就會很自然地想起妳，而單純是分享，就讓我覺得很開心。
+
+我也慢慢發現，原來自己並沒有想像中那麼堅強，也不是什麼事情都能夠笑著帶過。有時候我也會委屈、會難過，甚至會因為一些以前覺得沒什麼的事情而掉眼淚。以前我可能會覺得這樣的自己很奇怪，但現在我開始覺得，原來有情緒也是很正常的事情，我不需要總是要求自己表現得很好。
+
+而這些經歷，也讓我重新認識了自己，才發現原來我還有很多不一樣的樣子。原來我也會這麼想念一個人，會想把生活裡發生的事情都告訴她，也會因為一些很小的事情而開心很久。這些感受對以前的我來說都很陌生，但我很謝謝妳，讓我有機會認識這樣的自己。
+
+我曾經跟妳說過，妳很重要，所以妳也要過生日、吃蛋糕。但其實我以前一直不明白，為什麼生日是一件值得慶祝的事情，即使是自己的生日，吃了蛋糕、收到了祝福，我也沒有什麼特別的感覺。直到認識妳以後，我才第一次感受到，原來自己什麼都不需要做，也能被一個人放在心上。後來我才慢慢明白，原來一個人的存在，本身就可以是值得被珍惜的理由。
+
+也許生日的意義，就是讓我們有機會告訴一個人，光是妳的存在，就已經是一件值得慶祝的事情。
+
+我也想在這裡悄悄地告訴妳：「妳不需要做什麼來證明自己值得被愛。光是妳的存在，就已經很重要了。」
+</p>
+                    </div>
+                </div>
+            </dialog>
+        </section>
+        <section id="video" class="video-section">
+            <video controls playsinline preload="metadata">
+                <source src="images/VID_20260322_035910_155.mp4" type="video/mp4">
+                妳的瀏覽器不支援影片播放。
+            </video>
+        </section>
+        <section id="ending" class="ending">
+            <p>Happy Birthday, Ding.</p>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <p>Made by Ni, for Ding.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,816 @@
+/*基本*/
+@font-face{
+    font-family:"JasonHandwriting";
+    src:url("fonts/JasonHandwriting1.woff2") format("woff2");
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+}
+*{
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+    overflow-y:scroll;
+}
+body{
+    margin:0;
+    font-family:Arial,"Noto Sans TC",sans-serif;
+    color:#292929;
+    background:#E8E2D8;
+}
+button{
+    font:inherit;
+}
+
+/*電腦版導覽列*/
+.site-header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    min-height:56px;
+    padding:12px 30px;
+    background:rgba(255,255,255,.20);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    z-index:100;
+}
+.site-title{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    color:black;
+    text-decoration:none;
+    white-space:nowrap;
+}
+.site-nav{
+    display:flex;
+    gap:24px;
+}
+.site-nav a{
+    color:black;
+    text-decoration:none;
+}
+.site-nav a:hover{
+    opacity:.6;
+}
+.menu-button{
+    display:none;
+}
+
+/*封面*/
+.hero{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100svh;
+    overflow:hidden;
+    text-align:center;
+    background:#e9e8e5;
+}
+.hero-picture{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+.hero-picture img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center bottom;
+    animation:revealImage 2.5s ease-out both;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.15);
+    pointer-events:none;
+}
+.hero-content{
+    position:relative;
+    z-index:1;
+    padding:24px;
+    color:white;
+    animation:fadeIn 1.5s ease 2.5s both;
+}
+.hero h1{
+    font-family:"Noto Sans TC",sans-serif;
+    font-size:clamp(28px,3.8vw,46px);
+    font-weight:300;
+    line-height:1.9;
+    letter-spacing:.12em;
+    text-shadow:0 2px 12px rgba(0,0,0,.25);
+    white-space:nowrap;
+}
+.hero-subtitle{
+    margin-top:22px;
+    font-size:20px;
+    letter-spacing:.16em;
+}
+
+/*照片輪播*/
+.gallery,.letters,.ending{
+    padding:110px 24px;
+    text-align:center;
+}
+.gallery{
+    padding:140px 24px 110px;
+}
+.gallery-carousel{
+    position:relative;
+    display:flex;
+    align-items:center;
+    width:100%;
+    max-width:1300px;
+    margin:auto;
+    overflow:hidden;
+}
+.gallery-track{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    width:max-content;
+    overflow:visible;
+    padding:10px 0;
+    will-change:transform;
+}
+.gallery-track::-webkit-scrollbar{
+    display:none;
+}
+.gallery-track>img{
+    display:block;
+    flex:0 0 auto;
+    width:auto;
+    max-width:85vw;
+    height:440px;
+    object-fit:contain;
+}
+.gallery-prev,.gallery-next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
+    padding:0;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.8);
+    color:#292929;
+    font-size:30px;
+    line-height:1;
+    cursor:pointer;
+    transition:background .3s,opacity .3s;
+}
+.gallery-prev:hover,.gallery-next:hover{
+    background:rgba(255,255,255,.95);
+}
+.gallery-prev{
+    left:8px;
+}
+.gallery-next{
+    right:8px;
+}
+
+/* 信件標題 */
+.letter-heading{
+    text-align:center;
+    margin-bottom:55px;
+    animation:letterHeadingFade 1.2s ease both;
+}
+.letter-heading h2{
+    margin:0;
+    color:#51483F;
+    font-size:32px;
+    font-weight:400;
+    letter-spacing:.18em;
+}
+.letter-heading p{
+    margin:12px 0 0;
+    color:#A49A8D;
+    font-size:14px;
+    letter-spacing:.12em;
+}
+/* 標題淡入動畫 */
+@keyframes letterHeadingFade{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+        filter:blur(5px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+        filter:blur(0);
+    }
+}
+
+/*信件*/
+.letter-list{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:45px;
+}
+.letter-button{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:320px;
+    height:195px;
+    padding:20px;
+    border:none;
+    border-radius:3px;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 31px,
+            #D9D0C3 32px,
+            #D9D0C3 33px
+        ),
+        #FAF6EE;
+    box-shadow:4px 6px 14px rgba(70,55,40,.18);
+    cursor:pointer;
+    transition:transform .35s ease,box-shadow .35s ease;
+}
+/* 信紙右上角裝飾 */
+.letter-button::before{
+    content:"";
+    position:absolute;
+    top:18px;
+    right:22px;
+    width:36px;
+    height:36px;
+    border:1px solid rgba(125,110,95,.35);
+    border-radius:50%;
+}
+.letter-button::after{
+    content:"";
+    position:absolute;
+    top:27px;
+    right:31px;
+    width:18px;
+    height:18px;
+    border:1px solid rgba(125,110,95,.25);
+    border-radius:50%;
+}
+.letter-button span{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    padding:6px 12px;
+    background:rgba(250,246,238,.95);
+    color:#51483F;
+    font-size:20px;
+    letter-spacing:.15em;
+}
+.letter-button small{
+    color:#A49A8D;
+    font-size:12px;
+    font-weight:400;
+    letter-spacing:.08em;
+}
+.letter-button:hover{
+    transform:translateY(-10px);
+    box-shadow:8px 18px 28px rgba(70,55,40,.24);
+}
+.letter-button:active{
+    transform:translateY(-10px) scale(.97);
+}
+
+/* 信件彈窗 */
+.letter-dialog{
+    position:fixed;
+    width:min(90vw,650px);
+    max-height:85svh;
+    padding:0;
+    border:none;
+    border-radius:5px;
+    background:transparent;
+    color:#292929;
+    overflow:visible;
+    line-height:2.1;
+}
+.letter-dialog::backdrop{
+    background:rgba(20,20,20,.35);
+    backdrop-filter:blur(9px);
+}
+.letter-dialog[open]{
+    animation:fadeIn .5s ease both;
+}
+
+/* 信件外層 */
+.letter-modal-content{
+    position:relative;
+    width:100%;
+}
+
+/* 信件內容 */
+.letter-content{
+    max-height:85svh;
+    padding:55px 35px 40px;
+    overflow-y:auto;
+    background:#FAF8F5;
+    border-radius:5px;
+}
+.letter-content p{
+    text-align:left;
+    white-space:pre-line;
+    font-size:16px;
+}
+
+/* 關閉按鈕 */
+.letter-close{
+    position:absolute;
+    top:0;
+    right:-52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    padding:0;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.8);
+    font-size:32px;
+    font-weight:300;
+    line-height:1;
+    color:#51483F;
+    cursor:pointer;
+    z-index:10;
+}
+.letter-close:hover{
+    background:white;
+}
+
+/* 影片 */
+.video-section{
+    padding:40px 24px 110px;
+    display:flex;
+    justify-content:center;
+}
+.video-section video{
+    display:block;
+    width:100%;
+    max-width:700px;
+    aspect-ratio:16/9;
+    height:auto;
+    object-fit:contain;
+    background:#000;
+    border-radius:4px;
+}
+
+/*結尾*/
+.ending{
+    min-height:35vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 24px 90px;
+}
+.ending p{
+    margin:0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(28px,3.2vw,46px);
+    font-weight:400;
+    letter-spacing:.04em;
+    color:#51483F;
+}
+
+/* 製作紀錄 */
+#making-of{
+    max-width:760px;
+    min-height:100svh;
+    margin:auto;
+    padding:150px 28px 100px;
+}
+#making-of h1{
+    width:100%;
+    margin:0 0 55px;
+    text-align:center;
+    font-size:32px;
+    font-weight:400;
+    letter-spacing:0;
+    transform:translateX(4.5px);
+}
+.making-content p{
+    margin:0;
+    font-size:17px;
+    line-height:2.5;
+    letter-spacing:.03em;
+    white-space:pre-line;
+    color:#51483F;
+}
+/* Dev Log 兩側裝飾 */
+#making-of {
+    position: relative;
+}
+.dev-decoration {
+    position: absolute;
+    top: 210px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #A99B8A;
+    font-size: 11px;
+    letter-spacing: .15em;
+    white-space: nowrap;
+}
+.dev-left {
+    right: calc(100% + 45px);
+    align-items: flex-end;
+}
+.dev-right {
+    left: calc(100% + 45px);
+    align-items: flex-start;
+}
+.dev-line {
+    width: 75px;
+    height: 1px;
+    background: #B9AC9D;
+}
+/* 螢幕較窄時隱藏裝飾 */
+@media (max-width: 1100px) {
+    .dev-decoration {
+        display: none;
+    }
+}
+
+/* 網站署名 */
+.site-footer{
+    padding:28px 20px;
+    text-align:center;
+    background:#E8E2D8;
+}
+.site-footer p{
+    margin:0;
+    font-family:Georgia,serif;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:.1em;
+    color:#6F675F;
+}
+
+/*動畫*/
+@keyframes revealImage{
+    from{
+        opacity:.35;
+        filter:blur(22px);
+        transform:scale(1.04);
+    }
+    to{
+        opacity:1;
+        filter:blur(0);
+        transform:scale(1);
+    }
+}
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* 電腦版封面延伸與漸層 */
+@media(min-width:769px){
+    .hero{
+        height:115svh;
+        min-height:115svh;
+    }
+    .hero-content{
+        transform:none;
+        margin-top:-15svh;
+    }
+    .hero::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:1;
+        background:linear-gradient(
+            to bottom,
+            transparent 87%,
+            #E8E2D8 100%
+        );
+        pointer-events:none;
+    }
+}
+
+/*手機版*/
+@media(max-width:768px){
+    .hero-picture img {
+    content: url("images/20260322_181520.webp");
+    }
+    .site-header{
+        min-height:56px;
+        padding:8px 20px;
+    }
+    .menu-button{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:6px;
+        width:40px;
+        height:40px;
+        padding:5px;
+        border:none;
+        background:transparent;
+        cursor:pointer;
+        z-index:104;
+    }
+    .menu-button span{
+        display:block;
+        width:30px;
+        height:2px;
+        background:black;
+        transition:transform .3s,opacity .3s;
+    }
+    .site-nav{
+        display:none;
+        position:fixed;
+        inset:0;
+        width:100%;
+        height:100svh;
+        background:rgba(255,255,255,.35);
+        backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:40px;
+        z-index:102;
+    }
+    .site-nav.is-open{
+        display:flex;
+    }
+    .site-nav a{
+        font-size:24px;
+    }
+    .menu-button.is-open span:nth-child(1){
+        transform:translateY(8px) rotate(45deg);
+    }
+    .menu-button.is-open span:nth-child(2){
+        opacity:0;
+    }
+    .menu-button.is-open span:nth-child(3){
+        transform:translateY(-8px) rotate(-45deg);
+    }
+    .site-header:has(.site-nav.is-open) .menu-button{
+        position:fixed;
+        top:8px;
+        right:20px;
+        z-index:104;
+    }
+    .site-header:has(.site-nav.is-open) .site-nav{
+        z-index:103;
+    }
+
+    /*封面*/
+    .hero{
+        min-height:100svh;
+    }
+    .hero h1{
+        font-size:25px;
+        max-width:260px;
+        margin:0 auto;
+        line-height:1.8;
+        white-space:normal;
+    }
+    .hero::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:1;
+        background:linear-gradient(
+            to bottom,
+            transparent 88%,
+            #E8E2D8 100%
+        );
+        pointer-events:none;
+    }
+    .hero-subtitle{
+        font-size:15px;
+        letter-spacing:.12em;
+    }
+
+    /*照片輪播*/
+    .gallery,.letters,.ending{
+        padding:75px 18px;
+    }
+    .gallery-track>img{
+        display:block;
+        flex:0 0 auto;
+        width:auto;
+        max-width:none;
+        height:260px;
+        max-height:none;
+        object-fit:contain;
+    }
+
+    /*信件標題*/
+    .letter-heading{
+        margin-bottom:35px;
+    }
+    .letter-heading h2{
+        font-size:21px;
+    }
+    .letter-heading p{
+        font-size:12px;
+    }
+
+    /*信件*/
+    .letter-list{
+        gap:30px;
+    }
+    .letter-button{
+    width:min(80vw,240px);
+    height:150px;
+    }
+    .letter-button::before{
+        top:15px;
+        right:18px;
+        width:30px;
+        height:30px;
+    }
+    .letter-button::after{
+        top:22px;
+        right:25px;
+        width:16px;
+        height:16px;
+    }
+    .letter-button span{
+        font-size:18px;
+    }
+    .letter-button small{
+        font-size:11px;
+    }
+    .letter-dialog{
+        width:min(90vw,650px);
+        max-height:80svh;
+        padding:0;
+        overflow:visible;
+    }
+    .letter-content{
+        max-height:80svh;
+        padding:50px 24px 30px;
+    }
+    .letter-close{
+        top:-46px;
+        right:0;
+        width:36px;
+        height:36px;
+    }
+
+    /*製作紀錄*/
+   #making-of{
+    padding:120px 24px 70px;
+    }
+    #making-of h1{
+        margin-bottom:50px;
+        font-size:23px;
+    }
+    .making-content p{
+        font-size:15px;
+        line-height:2.3;
+    }
+
+    /* 手機版全螢幕毛玻璃選單 */
+    .site-header:has(.site-nav.is-open){
+        backdrop-filter:none;
+        -webkit-backdrop-filter:none;
+    }
+    .site-nav.is-open{
+        position:fixed;
+        inset:0;
+        width:100vw;
+        height:100dvh;
+        background:rgba(255,255,255,.45);
+        backdrop-filter:blur(25px);
+        -webkit-backdrop-filter:blur(25px);
+        z-index:103;
+    }
+    .site-nav.is-open a{
+        position:relative;
+        z-index:1;
+        color:#292929;
+    }
+}
+
+/* 生日密碼畫面 */
+.password-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+    padding: 24px;
+    background: #E8E2D8;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+.password-screen.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.password-box {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    color: #51483F;
+}
+.password-small {
+    font-size: 11px;
+    letter-spacing: .18em;
+    color: #817669;
+}
+.password-box h1 {
+    margin: 28px 0 18px;
+    font-family: Georgia, serif;
+    font-size: 42px;
+    font-weight: 400;
+}
+.password-hint {
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #817669;
+}
+#password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 230px;
+    margin: 0 auto;
+}
+#password-input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #C8BFB3;
+    border-radius: 3px;
+    background: #FAF8F5;
+    color: #51483F;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: .2em;
+    outline: none;
+}
+#password-input:focus {
+    border-color: #817669;
+}
+#password-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 3px;
+    background: #51483F;
+    color: white;
+    font-size: 13px;
+    letter-spacing: .15em;
+    cursor: pointer;
+    transition: background .3s ease;
+}
+#password-form button:hover {
+    background: #74685D;
+}
+.password-error {
+    min-height: 22px;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #9C655F;
+}
+.password-date {
+    margin-top: 35px;
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: #817669;
+}
+/* 解鎖後才播放封面動畫 */
+body:has(.password-screen:not(.is-hidden)) .hero-picture img,
+body:has(.password-screen:not(.is-hidden)) .hero-content {
+    animation-play-state: paused;
+}
+
+/* 已解鎖時，不顯示密碼畫面 */
+.birthday-unlocked .password-screen {
+    display: none !important;
+}
